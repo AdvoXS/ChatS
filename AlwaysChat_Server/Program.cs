@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 namespace AlwaysChat_Server
 {
     class Program
@@ -13,10 +14,6 @@ namespace AlwaysChat_Server
         private const int port = 8888;
         static void Main(string[] args)
         {
-            //TcpClient tcpClient = new TcpClient();
-            //tcpClient.Connect(adress, port);
-            //byte[] data = new byte[1024];
-            //StringBuilder str = new StringBuilder(); NetworkStream netStr = tcpClient.GetStream();
             TcpListener listener = null;
             try
             {
@@ -25,31 +22,18 @@ namespace AlwaysChat_Server
                 listener = new TcpListener(adress, port);
                 listener.Start();
 
+                Console.WriteLine("Ожидание подключений...");
+
                 while (true)
                 {
-                    Console.WriteLine("Ожидание подключений... ");
-
-                    // получаем входящее подключение
                     TcpClient client = listener.AcceptTcpClient();
-                    Console.WriteLine("Подключен клиент. Выполнение запроса...");
+                    ClientObject clientObject = new ClientObject(client);
 
-                    // получаем сетевой поток для чтения и записи
-                    NetworkStream stream = client.GetStream();
-
-                    // сообщение для отправки клиенту
-                    string response = "Привет мир";
-                    // преобразуем сообщение в массив байтов
-                    byte[] data = Encoding.UTF8.GetBytes(response);
-
-                    // отправка сообщения
-                    stream.Write(data, 0, data.Length);
-                    Console.WriteLine("Отправлено сообщение: {0}", response);
-                    // закрываем поток
-                    stream.Close();
-                    // закрываем подключение
-                    client.Close();
+                    // создаем новый поток для обслуживания нового клиента
+                    Thread clientThread = new Thread(new ThreadStart(clientObject.clientAction));
+                    clientThread.Start();
                 }
-             }
+            }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
