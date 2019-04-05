@@ -28,7 +28,7 @@ namespace AlwaysChat_Server
                 {
                     TcpClient client = listener.AcceptTcpClient();
                     ClientObject clientObject = new ClientObject(client);
-
+                    Console.WriteLine("Клиент подключен!");
                     // создаем новый поток для обслуживания нового клиента
                     Thread clientThread = new Thread(new ThreadStart(clientObject.clientAction));
                     clientThread.Start();
