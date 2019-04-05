@@ -1,0 +1,7 @@
+C:\Users\Fox\source\repos\AlwaysChat_Server\AlwaysChat_Server\bin\Debug\AlwaysChat_Server.exe.config
+C:\Users\Fox\source\repos\AlwaysChat_Server\AlwaysChat_Server\bin\Debug\AlwaysChat_Server.exe
+C:\Users\Fox\source\repos\AlwaysChat_Server\AlwaysChat_Server\bin\Debug\AlwaysChat_Server.pdb
+C:\Users\Fox\source\repos\AlwaysChat_Server\AlwaysChat_Server\obj\Debug\AlwaysChat_Server.csprojAssemblyReference.cache
+C:\Users\Fox\source\repos\AlwaysChat_Server\AlwaysChat_Server\obj\Debug\AlwaysChat_Server.csproj.CoreCompileInputs.cache
+C:\Users\Fox\source\repos\AlwaysChat_Server\AlwaysChat_Server\obj\Debug\AlwaysChat_Server.exe
+C:\Users\Fox\source\repos\AlwaysChat_Server\AlwaysChat_Server\obj\Debug\AlwaysChat_Server.pdb
